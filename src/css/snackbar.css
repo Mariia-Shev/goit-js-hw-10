@@ -1,0 +1,50 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  width: 360px;
+}
+.delay-label {
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: flex-start; */
+  flex-direction: column;
+  gap: 8px;
+  /* width: 360px; */
+}
+.delay-input {
+  width: 360px;
+  height: 40px;
+  border-radius: 4px;
+}
+.field {
+  width: 360px;
+  /* height: 40px; */
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  gap: 48px;
+}
+.field legend {
+  text-align: start;
+}
+.create-btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 360px;
+  height: 40px;
+  background-color: #4e75ff;
+
+  font-weight: 500;
+  font-size: 16px;
+
+  /* line-height: 24px; */
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin-bottom: 16px;
+}
