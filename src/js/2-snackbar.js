@@ -2,32 +2,33 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.form');
-const delayInput = document.querySelector('.delay-input');
 
 form.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
 
-  const delay = Number(delayInput.value);
-  const state = form.elements.state.value; // 'fulfilled' | 'rejected'
-  const isSuccess = state === 'fulfilled';
+  const delay = Number(form.elements.delay.value);
+
+  const stateInputs = form.elements.state;
+  const checkedState = Array.from(stateInputs).find(input => input.checked);
+  const isSuccess = checkedState.value === 'fulfilled';
 
   createPromise(delay, isSuccess)
-    .then(delay => {
+    .then(message => {
       iziToast.show({
         title: 'Success',
-        message: `✅ Fulfilled promise in ${delay}ms`,
+        message,
         backgroundColor: '#59A10D',
         titleColor: '#fff',
         messageColor: '#fff',
         position: 'topRight',
       });
     })
-    .catch(delay => {
+    .catch(message => {
       iziToast.show({
         title: 'Error',
-        message: `❌ Rejected promise in ${delay}ms`,
+        message,
         backgroundColor: '#EF4040',
         titleColor: '#fff',
         messageColor: '#fff',
@@ -43,9 +44,9 @@ function createPromise(delay, isSuccess) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (isSuccess) {
-        resolve(delay);
+        resolve(`✅ Fulfilled promise in ${delay}ms`);
       } else {
-        reject(delay);
+        reject(`❌ Rejected promise in ${delay}ms`);
       }
     }, delay);
   });
