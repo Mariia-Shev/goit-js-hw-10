@@ -1,16 +1,25 @@
 .timer-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
   row-gap: 8px;
+  width: 354px;
 }
 .timer {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
   gap: 24px;
   width: 346px;
   height: 72px;
+}
+.field {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0;
 }
 .time-picker {
   display: flex;

@@ -14,20 +14,20 @@ function handleSubmit(event) {
   const isSuccess = state === 'fulfilled';
 
   createPromise(delay, isSuccess)
-    .then(message => {
+    .then(delay => {
       iziToast.show({
         title: 'Success',
-        message,
+        message: `✅ Fulfilled promise in ${delay}ms`,
         backgroundColor: '#59A10D',
         titleColor: '#fff',
         messageColor: '#fff',
         position: 'topRight',
       });
     })
-    .catch(message => {
+    .catch(delay => {
       iziToast.show({
         title: 'Error',
-        message,
+        message: `❌ Rejected promise in ${delay}ms`,
         backgroundColor: '#EF4040',
         titleColor: '#fff',
         messageColor: '#fff',
@@ -43,9 +43,9 @@ function createPromise(delay, isSuccess) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (isSuccess) {
-        resolve(`✅ Fulfilled promise in ${delay}ms`);
+        resolve(delay);
       } else {
-        reject(`❌ Rejected promise in ${delay}ms`);
+        reject(delay);
       }
     }, delay);
   });
